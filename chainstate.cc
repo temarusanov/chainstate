@@ -203,8 +203,7 @@ int main(int argc, char **argv)
 
                 for(; vAvail[vout_idx] == 0; ++vout_idx);
 
-                code = get_next_varint(value);
-                nHeight = code >> 1;
+                uint32_t height = get_next_varint(value) >> 1;
 
                 amount = decompress_amount(get_next_varint(value));
 
@@ -290,7 +289,7 @@ int main(int argc, char **argv)
 
                 
 
-                cout << string_to_hex(tx) << ";" << vout_idx << ";" << addr << ";" << nHeight << ";" << setprecision(8) << fixed << double(amount) / double(100000000) << endl;
+                cout << string_to_hex(tx) << ";" << vout_idx << ";" << addr << ";" << height << ";" << setprecision(8) << fixed << double(amount) / double(100000000) << endl;
                 vout_idx ++;
                 addr = DEFAULT_ADDRESS;
             }
