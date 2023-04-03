@@ -9,7 +9,7 @@ BALANCES_FILE=balances-${COIN}-$(TZ=UTC date +%Y%m%d-%H%M)-${RANDOMSTR}
 BALANCES_FILE_SAMPLE=balances-${COIN}-$(TZ=UTC date +%Y%m%d-%H%M)-sample
 
 echo "Cleaning existing files..."
-rm -f state cs.out cs.err
+rm -rf ./state ./cs.out ./cs.err
 
 echo "Stopping ${COINDAEMON}..."
 systemctl stop ${COINDAEMON}
