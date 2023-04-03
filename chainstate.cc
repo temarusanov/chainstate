@@ -155,7 +155,7 @@ int main(int argc, char **argv)
             string orig_value = value;
             uint64_t version = get_next_varint(value);
             code = get_next_varint(value);
-            nHeight = (get_next_varint(value) >> 1);
+            nHeight = code;
 
             bool isCoinbase = code & 0x01;
             bool isVout0NotSpent = code & 0x02;
