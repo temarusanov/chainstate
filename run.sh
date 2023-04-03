@@ -11,6 +11,9 @@ BALANCES_FILE_SAMPLE=balances-${COIN}-$(TZ=UTC date +%Y%m%d-%H%M)-sample
 echo "Cleaning existing files..."
 rm -rf ./state ./cs.out ./cs.err
 
+echo "${COINDAEMON} status"
+systemctl status ${COINDAEMON} --no-pager
+
 echo "Stopping ${COINDAEMON}..."
 systemctl stop ${COINDAEMON}
 
