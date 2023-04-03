@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <sstream>
 #include <iomanip>
 #include <string>
 #include <vector>
@@ -196,6 +197,8 @@ int main(int argc, char **argv)
 
             uint64_t vout_idx = 0;
 
+            stringstream resultBufferStream;
+
             while(value.size() > 21 && false == has_error) {
                 unsigned char type;
                 // read vout (compact amount representation / special txout type / address uint160)
@@ -284,12 +287,12 @@ int main(int argc, char **argv)
                         break;
                 }
 
-                
-
-                cout << string_to_hex(tx) << ";" << vout_idx << ";" << addr << ";" << get_varint(value) << ";" << setprecision(8) << fixed << double(amount) / double(100000000) << endl;
+                resultBufferStream << string_to_hex(tx) << ";" << std::to_string(vout_idx) << ";" << addr << ";" << "{bh}" << ";" << setprecision(8) << fixed << double(amount) / double(100000000) << endl;
                 vout_idx ++;
                 addr = DEFAULT_ADDRESS;
             }
+            std::string const result = replace_all(resultBufferStream.str(), "{bh}", std::to_string(get_varint(value)));
+
             continue;
         }
 
