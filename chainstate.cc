@@ -153,18 +153,8 @@ int main(int argc, char **argv)
             reverse(tx.begin(), tx.end());
 
             string orig_value = value;
-            string value2 = value;
             uint64_t version = get_next_varint(value);
             code = get_next_varint(value);
-
-            uint32_t iii = 0;
-
-            while(iii != 4) {
-                uint64_t vvv = get_next_varint(value2);
-                cout << vvv << (vvv >> 1);
-                iii++;
-            }
-            cout << endl;
 
             bool isCoinbase = code & 0x01;
             bool isVout0NotSpent = code & 0x02;
@@ -296,7 +286,7 @@ int main(int argc, char **argv)
 
                 
 
-                cout << string_to_hex(tx) << ";" << vout_idx << ";" << addr << ";" << nHeight << ";" << setprecision(8) << fixed << double(amount) / double(100000000) << endl;
+                cout << string_to_hex(tx) << ";" << vout_idx << ";" << addr << ";" << setprecision(8) << fixed << double(amount) / double(100000000) << endl;
                 vout_idx ++;
                 addr = DEFAULT_ADDRESS;
             }
@@ -418,9 +408,9 @@ int main(int argc, char **argv)
         }
 
         if (addr != string()) {
-            cout << string_to_hex(tx) << ";" << txn << ";" << addr << ";" << nHeight << ";" << setprecision(8) << fixed << double(amount) / double(100000000) << endl;
+            cout << string_to_hex(tx) << ";" << txn << ";" << addr << ";" << setprecision(8) << fixed << double(amount) / double(100000000) << endl;
         } else {
-            cerr << string_to_hex(tx) << ";Invalid address or lost;" << amount << ";" << nHeight << endl;
+            cerr << string_to_hex(tx) << ";Invalid address or lost;" << amount << << endl;
         }
     }
 
