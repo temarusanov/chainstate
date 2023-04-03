@@ -292,7 +292,7 @@ int main(int argc, char **argv)
                 addr = DEFAULT_ADDRESS;
             }
             std::string const result = replace_all(resultBufferStream.str(), "{bh}", std::to_string(get_varint(value)));
-
+            cout << result;
             continue;
         }
 
