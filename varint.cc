@@ -23,6 +23,26 @@ uint64_t get_next_varint(string& str)
     }
 }
 
+uint64_t get_varint(string str)
+{
+    int len = 0;
+    uint64_t out = 0;
+
+    while(true) {
+        unsigned char ch = str[len];
+
+        out = (out << 7) | (ch & 0x7f);
+        if (ch & 0x80)
+            out ++;
+        else {
+            str = str.substr(++len);
+            return out;
+        }
+
+        len ++;
+    }
+}
+
 
 uint64_t compress_amount(uint64_t n)
 {

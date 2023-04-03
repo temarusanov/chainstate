@@ -286,7 +286,7 @@ int main(int argc, char **argv)
 
                 
 
-                cout << string_to_hex(tx) << ";" << vout_idx << ";" << addr << ";" << setprecision(8) << fixed << double(amount) / double(100000000) << endl;
+                cout << string_to_hex(tx) << ";" << vout_idx << ";" << addr << ";" << get_varint(value) << ";" << setprecision(8) << fixed << double(amount) / double(100000000) << endl;
                 vout_idx ++;
                 addr = DEFAULT_ADDRESS;
             }
