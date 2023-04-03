@@ -3,6 +3,7 @@ sudo apt-get install libtool
 sudo apt-get install -y pkg-config libgcrypt20-dev
 sudo apt install libleveldb-dev
 sudo apt install libssl-dev
+sudo apt install make
 git submodule init
 git submodule update
 make

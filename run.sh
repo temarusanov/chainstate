@@ -34,23 +34,4 @@ if test ! -e cs.out; then
     exit 1
 fi
 
-echo "Generating & sorting final balances..."
-cut -d';' -f3,4 cs.out | \
-    sort | \
-    awk -F ';' '{ if ($1 != cur) { if (cur != "") { print cur ";" sum }; sum = 0; cur = $1 }; sum += $2 } END { print cur ";" sum }' | \
-    sort -t ';' -k 2 -g -r > ${BALANCES_FILE}
-
-head -100 ${BALANCES_FILE} | sed -e 's/..................;/\.\.\.\.\.\.\[truncated\]\.\.\.\.\.\.;/' > ${BALANCES_FILE_SAMPLE}
-
-echo "Compressing balances"
-gzip ${BALANCES_FILE}
-gzip ${BALANCES_FILE_SAMPLE}
-
-echo "Generated archive:"
-ls -l ${BALANCES_FILE}.gz
-ls -l ${BALANCES_FILE_SAMPLE}.gz
-
-echo "Cleaning state"
-rm -fr state cs.out cs.err
-
 exit 0
