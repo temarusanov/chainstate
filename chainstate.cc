@@ -203,6 +203,9 @@ int main(int argc, char **argv)
 
                 for(; vAvail[vout_idx] == 0; ++vout_idx);
 
+                code = get_next_varint(value);
+                nHeight = code >> 1;
+
                 amount = decompress_amount(get_next_varint(value));
 
                 if(value.size() < 1) {
@@ -285,8 +288,7 @@ int main(int argc, char **argv)
                         break;
                 }
 
-                code = get_next_varint(value);
-                nHeight = code >> 1;
+                
 
                 cout << string_to_hex(tx) << ";" << vout_idx << ";" << addr << ";" << nHeight << ";" << setprecision(8) << fixed << double(amount) / double(100000000) << endl;
                 vout_idx ++;
