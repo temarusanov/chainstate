@@ -153,9 +153,10 @@ int main(int argc, char **argv)
             reverse(tx.begin(), tx.end());
 
             string orig_value = value;
+            string value2 = value;
             uint64_t version = get_next_varint(value);
             code = get_next_varint(value);
-            nHeight = code;
+            cout << get_next_varint(value2) << (value2 >> 1) << get_next_varint(value2) << (value2 >> 1) << get_next_varint(value2) << (value2 >> 1) << get_next_varint(value2) << (value2 >> 1) << endl;
 
             bool isCoinbase = code & 0x01;
             bool isVout0NotSpent = code & 0x02;
