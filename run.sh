@@ -14,8 +14,8 @@ rm -f state cs.out cs.err
 echo "Stopping ${COINDAEMON}..."
 systemctl --user stop ${COINDAEMON}
 
-echo "Copying chainstate..."
-cp -Rp ~/.${COINDIR}/chainstate state
+echo "Copying chainstate from ${COINDIR}"
+cp -Rp ${COINDIR} state
 
 echo "Syncing..."
 sync

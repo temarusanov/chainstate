@@ -1,3 +1,14 @@
+```
+sudo apt-get install libtool
+sudo apt-get install -y pkg-config libgcrypt20-dev
+sudo apt install libleveldb-dev
+sudo apt install libssl-dev
+git submodule init
+git submodule update
+make
+./run.sh <COIN> <DAEMON> <PATH_TO_CHAINSTATE>
+```
+
 # Bitcoin core chainstate parser
 
 It is based on bitcoin core 0.15.1 client.
