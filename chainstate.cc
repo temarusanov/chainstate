@@ -406,9 +406,9 @@ int main(int argc, char **argv)
         }
 
         if (addr != string()) {
-            cout << string_to_hex(tx) << ";" << txn << ";" << addr << ";" << amount << endl;
+            cout << string_to_hex(tx) << ";" << txn << ";" << addr << ";" << amount << ";" << nHeight << endl;
         } else {
-            cerr << string_to_hex(tx) << ";Invalid address or lost;" << amount << endl;
+            cerr << string_to_hex(tx) << ";Invalid address or lost;" << amount << ";" << nHeight << endl;
         }
     }
 
