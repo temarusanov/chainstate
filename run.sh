@@ -12,7 +12,7 @@ echo "Cleaning existing files..."
 rm -f state cs.out cs.err
 
 echo "Stopping ${COINDAEMON}..."
-systemctl --user stop ${COINDAEMON}
+systemctl stop ${COINDAEMON}
 
 echo "Copying chainstate from ${COINDIR}"
 cp -Rp ${COINDIR} state
@@ -21,7 +21,7 @@ echo "Syncing..."
 sync
 
 echo "Copying done. Restarting ${COINDAEMON}..."
-systemctl --user start ${COINDAEMON}
+systemctl start ${COINDAEMON}
 
 echo "Running chainstate parser..."
 ./chainstate ${COIN} >cs.out 2>cs.err
